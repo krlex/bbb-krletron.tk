@@ -2,3 +2,4 @@ Vagrantfile
 *.vagrant/
 *.log
 *.pyc
+transaction.yaml

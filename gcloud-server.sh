@@ -4,7 +4,6 @@
 PROJECT=testing-system-270517
 DOMAIN=krletron.tk
 SUBNAME=class
-IP_ADDRESS= gcloud compute instances list | tail -n+2 | awk '{print $1, $5}' |  awk '/$SUBNAME/{getline;getline;print $2}'
 OS=ubuntu-1604-xenial-v20200429
 POS=ubuntu-os-cloud
 MACHINE=n1-standard-4
@@ -33,10 +32,5 @@ instances create $SUBNAME --zone=$ZONE \
                       --shielded-integrity-monitoring \
                       --reservation-affinity=any
 
-gcloud beta dns --project=testing-system-270517 record-sets transaction start --zone=krletron
-#
-gcloud beta dns --project=testing-system-270517 record-sets transaction add $IP_ADDRESS --name=$SUBNAME.$DOMAIN. --ttl=300 --type=A --zone=krletron
-#
-#gcloud beta dns --project=testing-system-270517 record-sets transaction remove $IP_ADDRESS --name=$SUBNAME.$DOMAIN. --ttl=300 --type=A --zone=krletron
-#
-gcloud beta dns --project=testing-system-270517 record-sets transaction execute --zone=krletron
+
+timeout 90 ./gcloud-dns.sh
