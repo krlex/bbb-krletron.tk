@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
 
-PROJECT="testing-system-270517" #Project name on GCP
-DOMAIN="krletron.tk"            #Domain name
-SUBNAME="class"                 #Subdomain
-OS="ubuntu-1604-xenial-v20200429" #Image on GCP
-POS="ubuntu-os-cloud"           # images-projects of gcp
-MACHINE="n1-standard-4"         # Configuration GCP VM
-DISKTYPE="pd-ssd"               # Select HDD/SSD
-DISKSYZE="10GB"                 # Size of HDD/SSD
-SUBNET="default"
-ZONE="us-central1-a"            # Which zone you want to install your VM
-
+export PROJECT="testing-system-270517" #Project name on GCP
+export DOMAIN="krletron.tk"            #Domain name
+export SUBNAME="class"                 #Subdomain
+export OS="ubuntu-1604-xenial-v20200521" #Image on GCP
+export POS="ubuntu-os-cloud"           # images-projects of gcp
+export MACHINE="n1-standard-4"         # Configuration GCP VM
+export DISKTYPE="pd-ssd"               # Select HDD/SSD
+export DISKSYZE="10GB"                 # Size of HDD/SSD
+export SUBNET="default"
+export ZONE="us-central1-a"            # Which zone you want to install your VM
+export IP_ADDRESS="$(gcloud compute instances list | tail -n+2 | awk '{print $1, $5}' |  awk '/$SUBNAME/{getline;getline;print $2}')"
+export DNSZONE="krletron"
 
 gcloud beta compute --project=$PROJECT \
 instances create $SUBNAME --zone=$ZONE \
@@ -32,5 +33,10 @@ instances create $SUBNAME --zone=$ZONE \
                       --shielded-integrity-monitoring \
                       --reservation-affinity=any
 
+gcloud dns record-sets transaction start --zone=$DNSZONE
+gcloud dns record-sets transaction add $IP_ADDRESS --name=$SUBNET.$DOMAIN \
+  --ttl="30" \
+  --type="A" \
+  --zone=$DNSZONE
 
-timeout 90 ./gcloud-dns.sh
+gcloud dns record-sets transaction execute --zone=$DNSZONE
