@@ -4,7 +4,7 @@
 export PROJECT="testing-system-270517" #Project name on GCP
 export DOMAIN="krletron.tk"            #Domain name
 export SUBNAME="class"                 #Subdomain
-export OS="ubuntu-1604-xenial-v20200521" #Image on GCP
+export OS="ubuntu-1604-xenial-v20200610" #Image on GCP
 export POS="ubuntu-os-cloud"           # images-projects of gcp
 export MACHINE="n1-standard-4"         # Configuration GCP VM
 export DISKTYPE="pd-ssd"               # Select HDD/SSD
