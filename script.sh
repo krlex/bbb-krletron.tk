@@ -1,10 +1,25 @@
 #!/usr/bin/env bash
 
-export USERNAME=$1
-export PASSWD=$2
-export SUB=$3
-export DOMAIN=$4
-export EMAIL=$5
+echo "Add Your Email: $1";
+read $1;
+
+echo  "Add Username: $2";
+read $2;
+
+echo "Add Password: $3";
+read $3;
+
+echo "Add Subname: $4";
+read $4;
+
+echo "Add Domain name: $5";
+read $5;
+
+export EMAIL=$1
+export USERNAME=$2
+export PASSWD=$3
+export SUB=$4
+export DOMAIN=$5
 
 sudo apt update
 sudo apt upgrade -y
