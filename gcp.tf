@@ -8,6 +8,7 @@ resource "google_compute_instance" "class" {
   name         = "class"
   machine_type = "n1-standard-4"
   zone         = "us-central1-a"
+  tags = ["http-server", "https-server"]
 
   boot_disk {
     initialize_params {
@@ -27,23 +28,23 @@ resource "google_compute_instance" "class" {
   }
 }
 
+resource "google_dns_managed_zone" "class" {
+  name     = "krletron"
+  dns_name = "krletron.tk."
+}
+
 resource "google_dns_record_set" "a" {
   name         = "class.${google_dns_managed_zone.class.dns_name}"
   managed_zone = google_dns_managed_zone.class.name
   type         = "A"
-  ttl          = 300
+  ttl          = 60
 
   rrdatas = [google_compute_instance.class.network_interface.0.access_config.0.nat_ip]
 }
 
-resource "google_dns_managed_zone" "class" {
-  name     = "class"
-  dns_name = "krletron.tk."
-}
-
-resource "google_compute_firewall" "class" {
-  name    = "class-firewall"
-  network = google_compute_network.class.name
+resource "google_compute_firewall" "firewall" {
+  name    = "firewall"
+  network = google_compute_network.network.name
 
   allow {
     protocol = "icmp"
@@ -53,10 +54,20 @@ resource "google_compute_firewall" "class" {
     protocol = "tcp"
     ports    = ["80", "8080"]
   }
+
+  #allow {
+  #  protocol = "http"
+  #  ports    = ["80"]
+  #}
+
+  #allow {
+  #  protocol = "https"
+  #  ports    = ["8080"]
+  #}
 }
 
-resource "google_compute_network" "class" {
-  name = "class-network"
+resource "google_compute_network" "network" {
+  name = "class"
 }
 
 
