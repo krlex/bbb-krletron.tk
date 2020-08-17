@@ -1,5 +1,5 @@
 provider "google" {
-   credentials = file("tfsvc.json")
+   credentials = file("class.krletron.json")
    project     = "testing-system-270517"
    region      = "us-central1"
 }
