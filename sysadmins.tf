@@ -16,7 +16,18 @@ resource "google_compute_instance" "class" {
   }
 }
 
-  metadata_startup_script = "sudo apt-get -y update; sudo apt install -y nginx"
+#  metadata_startup_script = "sudo apt-get -y update; sudo apt upgrade -y;"
+#  provisioner "file" {
+#    source = "script.sh"
+#    destination = "/tmp/scipt.sh"
+#  }
+#
+#  provisioner "remote-exec" {
+#    inline = [
+#      "chmod +x /tmp/script.sh",
+#      "/tmp/script.sh args",
+#    ]
+#  }
 
   network_interface {
   network = "default"
