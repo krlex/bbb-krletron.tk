@@ -4,5 +4,6 @@ Vagrantfile
 *.log
 *.backup
 *.tfstate
+.terraform.tfstate.lock.info
 *.pyc
 transaction.yaml
