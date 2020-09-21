@@ -32,5 +32,5 @@ docker exec greenlight-v2 bundle exec rake user:create["$username","$email","$pa
 echo "If you wana know how to create Admin account:"
 echo "https://docs.bigbluebutton.org/greenlight/gl-admin.html#creating-an-administrator-account"
 
-GO TO:
+echo GO TO:
 https://$subname.$domainname
