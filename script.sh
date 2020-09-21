@@ -8,8 +8,7 @@ echo  "Add Username: "
 read username
 echo "Your Username is: $username"
 
-echo "Add Password: "
-read password
+stty -echo ; read -p "Add Password: " password; stty echo
 echo "I don't wanna show you"
 
 echo "Add Subname: "
@@ -28,7 +27,10 @@ git clone https://github.com/bigbluebutton/bbb-install
 
 ./bbb-install/bbb-install.sh -v xenial-220 -s "$subname"."$domainname" -e "$email" -g
 
-echo "How to create Admin account:"
+docker exec greenlight-v2 bundle exec rake user:create["$username","$email","$password","admin"]
+
+echo "If you wana know how to create Admin account:"
 echo "https://docs.bigbluebutton.org/greenlight/gl-admin.html#creating-an-administrator-account"
 
-docker exec greenlight-v2 bundle exec rake user:create["$username","$email","$password","admin"]
+GO TO:
+https://$subname.$domainname
