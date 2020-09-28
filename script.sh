@@ -21,8 +21,8 @@ echo "Your Domain is: $domainname"
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y git vim tmux
 git clone https://github.com/bigbluebutton/bbb-install
+sudo apt install -y git vim tmux
 
 
 ./bbb-install/bbb-install.sh -v xenial-220 -s "$subname"."$domainname" -e "$email" -g
@@ -34,5 +34,5 @@ echo "https://docs.bigbluebutton.org/greenlight/gl-admin.html#creating-an-admini
 
 clear
 
-echo GO TO:
-https://$subname.$domainname
+echo "GO TO:"
+"https://$subname.$domainname"
