@@ -35,4 +35,4 @@ echo "https://docs.bigbluebutton.org/greenlight/gl-admin.html#creating-an-admini
 clear
 
 echo "GO TO:"
-"https://$subname.$domainname"
+echo "https://$subname.$domainname"
