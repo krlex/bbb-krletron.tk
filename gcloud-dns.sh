@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-export DOMAIN="krletron.tk"
+#export DOMAIN="krletron.tk"
+export DOMAIN="sysadmins.cf"
 export SUBNAME="class"
 export IP_ADDRESS="$(gcloud compute instances list | tail -n+2 | awk '{print $1, $5}' |  awk '/$SUBNAME/{getline;getline;print $2}')"
 export DNSZONE="krletron"

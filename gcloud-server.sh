@@ -2,7 +2,8 @@
 
 
 export PROJECT="testing-system-270517" #Project name on GCP
-export DOMAIN="krletron.tk"            #Domain name
+export DOMAIN="sysadmins.cf"           #TestDomain name
+#export DOMAIN="krletron.tk"           #RealDomain name
 export SUBNAME="class"                 #Subdomain
 export OS="ubuntu-1604-xenial-v20200610" #Image on GCP
 export POS="ubuntu-os-cloud"           # images-projects of gcp
