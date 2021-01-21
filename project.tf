@@ -1,5 +1,5 @@
 provider "google" {
-   credentials = file("class.sysadmins.json")
+   credentials = file("class.project.json")
    project     = "testing-system-270517"
    region      = "us-central1"
 }
@@ -47,7 +47,7 @@ resource "google_dns_record_set" "a" {
 
 resource "google_dns_managed_zone" "set-class" {
   name     = "class"
-  dns_name = "sysadmins.cf."
+  dns_name = "krletron.cf."
 }
 
 #resource "google_compute_firewall" "firewall" {

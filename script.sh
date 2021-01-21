@@ -26,7 +26,7 @@ sudo apt install -y git vim tmux
 git clone https://github.com/bigbluebutton/bbb-install
 
 
-./bbb-install/bbb-install.sh -v xenial-220 -s "class"."sysadmins.cf" -e "krle@tilda.center" -g
+./bbb-install/bbb-install.sh -v xenial-220 -s "class"."krletron.cf" -e "krle@tilda.center" -g
 
 echo "How to create Admin account:"
 echo "https://docs.bigbluebutton.org/greenlight/gl-admin.html#creating-an-administrator-account"

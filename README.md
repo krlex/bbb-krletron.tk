@@ -1,4 +1,4 @@
-# this a script for installation and configuration BIG BLUE BUTTON for [https://krletron.tk](krletron.tk)
+# this a script for installation and configuration BIG BLUE BUTTON for [https://krletron.cf](krletron.cf)
 
 if you user GCP, AWS or AZURE ... You can also use Terraform script (with few changes)
 
